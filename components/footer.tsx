@@ -78,16 +78,7 @@ export function Footer() {
                 <Icons.gitHub className='h-4 w-4' />
                 <span className='sr-only'>GitHub</span>
               </Link>
-              <Link
-                href='https://twitter.com/ChrisGachuhi'
-                target='_blank'
-                rel='noopener noreferrer'
-                className={cn(
-                  buttonVariants({ variant: 'ghost', size: 'icon' })
-                )}>
-                <Icons.twitter className='h-4 w-4' />
-                <span className='sr-only'>Twitter</span>
-              </Link>
+
               <Link
                 href='https://linkedin.com/in/chris-john-gachuhi'
                 target='_blank'
