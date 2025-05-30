@@ -19,47 +19,38 @@ export default function ContactPage() {
     {
       title: 'Email',
       description: 'For direct messages and inquiries',
-      icon: (
-        <Icons.mail className='h-8 w-8 text-[#D93025] dark:text-[#F28B82]' />
-      ),
-      buttonIcon: <Icons.mail className='h-5 w-5' />,
+      icon: <Icons.mail className="h-8 w-8 text-[#D93025]" />,
+      buttonIcon: <Icons.mail className="h-5 w-5" />,
       href: 'mailto:chrisgachuhi@gmail.com',
       buttonLabel: 'Send an Email',
       borderColor: 'hover:border-[#DB4436]',
       bgColor: 'bg-[#DB4437] hover:bg-[#C53929]',
-      darkBgColor: 'dark:bg-[#C53929] dark:hover:bg-[#B33426]',
-      circleBg: 'bg-[#FCE8E6] dark:bg-[#3C1E1A]',
-      hoverCircle: 'group-hover:bg-[#F4C7C3] dark:group-hover:bg-[#5C2B29]',
+      circleBg: 'bg-[#FCE8E6]',
+      hoverCircle: 'group-hover:bg-[#F4C7C3]',
     },
     {
       title: 'WhatsApp',
       description: 'For quick messages and calls',
-      icon: (
-        <MessageSquare className='h-8 w-8 text-[#25D366] dark:text-[#5AE06E]' />
-      ),
-      buttonIcon: <MessageSquare className='h-5 w-5' />,
+      icon: <MessageSquare className="h-8 w-8 text-[#25D366]" />,
+      buttonIcon: <MessageSquare className="h-5 w-5" />,
       href: 'https://wa.me/254718729487',
       buttonLabel: 'Message on WhatsApp',
       borderColor: 'hover:border-[#25D366]',
       bgColor: 'bg-[#25D366] hover:bg-[#1EBE5E]',
-      darkBgColor: 'dark:bg-[#1EBE5E] dark:hover:bg-[#18A84E]',
-      circleBg: 'bg-[#E8F5E9] dark:bg-[#1E3A21]',
-      hoverCircle: 'group-hover:bg-[#C8E6C9] dark:group-hover:bg-[#2D5F31]',
+      circleBg: 'bg-[#E8F5E9]',
+      hoverCircle: 'group-hover:bg-[#C8E6C9]',
     },
     {
       title: 'LinkedIn',
       description: 'For professional inquiries and networking',
-      icon: (
-        <Icons.linkedin className='h-8 w-8 text-[#0A66C2] dark:text-[#70B5F9]' />
-      ),
-      buttonIcon: <Icons.linkedin className='h-5 w-5' />,
+      icon: <Icons.linkedin className="h-8 w-8 text-[#0A66C2]" />,
+      buttonIcon: <Icons.linkedin className="h-5 w-5" />,
       href: 'https://linkedin.com/in/chris-john-gachuhi',
       buttonLabel: 'Connect on LinkedIn',
       borderColor: 'hover:border-[#0A66C2]',
       bgColor: 'bg-[#0A66C2] hover:bg-[#004182]',
-      darkBgColor: 'dark:bg-[#0A66C2] dark:hover:bg-[#004182]',
-      circleBg: 'bg-[#E3F2FD] dark:bg-[#0D2640]',
-      hoverCircle: 'group-hover:bg-[#BBDEFB] dark:group-hover:bg-[#1A3E6F]',
+      circleBg: 'bg-[#E3F2FD]',
+      hoverCircle: 'group-hover:bg-[#BBDEFB]',
     },
   ]
 
@@ -99,7 +90,7 @@ export default function ContactPage() {
                 <Button
                   asChild
                   size='lg'
-                  className={`w-full ${method.bgColor} ${method.darkBgColor} text-white`}>
+                  className={`w-full ${method.bgColor} text-white transition-colors`}>
                   <a
                     href={method.href}
                     target='_blank'

@@ -7,7 +7,6 @@ import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -106,11 +105,11 @@ export function Navbar() {
               ))}
             </NavigationMenuList>
           </NavigationMenu>
-          <ThemeToggle />
+
         </div>
 
         <div className="flex md:hidden">
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="ml-2">
