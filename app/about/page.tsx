@@ -198,7 +198,7 @@ export default function AboutPage() {
                             className='w-full'>
                             {isLoading ? (
                               <>
-                                <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
+                                <Icons.refresh className='mr-2 h-4 w-4 animate-spin' />
                                 Sending...
                               </>
                             ) : (
