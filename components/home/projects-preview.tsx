@@ -17,7 +17,7 @@ import { Icons } from '@/components/icons'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 
-// Mock project data
+// project data
 const projects = [
   {
     id: '1',

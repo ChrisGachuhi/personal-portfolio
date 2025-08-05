@@ -21,7 +21,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}>
             <h1 className='gradient-text text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl'>
-              Architecting Scalable Systems. Mentoring the Next Generation.
+              Full-Stack Engineer, Technical Founder & Team Catalyst
             </h1>
           </motion.div>
 
@@ -30,7 +30,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className='mt-6 text-lg text-muted-foreground md:text-xl'>
-            I help businesses and teams ship high-performance web applications
+            Building revolutionary products, fast MVPs for startups, robust solutions for established teams.
           </motion.p>
 
           <motion.p
@@ -38,12 +38,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className='mt-4 text-base text-muted-foreground md:text-lg'>
-            As the founder of{' '}
-            <span className='text-foreground font-semibold'>
-              Codegenix East Africa
-            </span>
-            , I focus on building scalable systems, mentoring junior devs, and
-            helping mission-driven clients make smart technical decisions.
+            With a proven track record as a technical founder across multiple startups, I specialize in architecting and shipping high-impact MVPs at speed. My experience spans launching new products from scratch, scaling systems, and collaborating with established teams to enhance existing codebases. Whether leading innovation or integrating seamlessly into ongoing projects, I bring a blend of technical excellence, entrepreneurial drive, and a passion for delivering business value.
           </motion.p>
 
           <motion.div

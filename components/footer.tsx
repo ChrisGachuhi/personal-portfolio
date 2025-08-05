@@ -100,8 +100,7 @@ export function Footer() {
               reserved.
             </p>
             <p className='text-center text-sm text-muted-foreground'>
-              Built with Next.js, Tailwind CSS, shadcn/ui, and some serious
-              attention to detail.
+              I built this with Next.js, Tailwind CSS, shadcn/ui, and a serious attention to detail.
             </p>
           </div>
         </div>

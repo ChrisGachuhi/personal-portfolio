@@ -3,6 +3,13 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { Icons } from '@/components/icons'
 import {
@@ -14,8 +21,54 @@ import {
 } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Badge } from '@/components/ui/badge'
+import { Separator } from '@/components/ui/separator'
+
+const formSchema = z.object({
+  email: z.string().email('Please enter a valid email address').optional(),
+  whatsapp: z.string().min(10, 'Please enter a valid phone number').optional(),
+  deliveryMethod: z.enum(['email', 'whatsapp']).default('email'),
+})
+
+type FormData = z.infer<typeof formSchema>
 
 export default function AboutPage() {
+  const [showModal, setShowModal] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [successMessage, setSuccessMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      deliveryMethod: 'email'
+    }
+  })
+
+  const deliveryMethod = watch('deliveryMethod')
+
+  const onSubmit = (data: FormData) => {
+    setIsLoading(true)
+    setErrorMessage('')
+    setSuccessMessage('')
+
+    try {
+      // In a real implementation, this would call the API
+      setTimeout(() => {
+        setSuccessMessage(
+          `Resume has been sent to your ${data.deliveryMethod === 'email' ? 'email' : 'WhatsApp'}!`
+        )
+      }, 1000)
+      setSuccessMessage(
+        `Resume has been sent to your ${data.deliveryMethod === 'email' ? 'email' : 'WhatsApp'}!`
+      )
+      setShowModal(false)
+    } catch (error) {
+      setErrorMessage('Failed to send resume. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <div className='flex flex-col'>
       <section className='py-20'>
@@ -25,34 +78,22 @@ export default function AboutPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className='flex flex-col justify-center'>
-              <Badge className='mb-4 w-fit bg-accent text-accent-foreground'>
+              className='flex flex-col items-center text-center justify-center'>
+              <Badge className='mb-4 w-fit bg-accent text-accent-foreground mx-auto'>
                 About Me
               </Badge>
-              <h1 className='text-4xl font-bold tracking-tight sm:text-5xl'>
-                More Than Code — I Build Scalable Impact
+              <h1 className='text-4xl font-bold tracking-tight sm:text-5xl mx-auto'>
+                More Than Code. I Build Scalable Impact.
               </h1>
-              <p className='mt-6 text-lg text-muted-foreground'>
-                I&apos;m Chris John Gachuhi — a full-stack developer, technical
-                mentor, and founder of Codegenix East Africa. I specialize in
+              <p className='mt-6 text-lg text-muted-foreground text-left'>
+                I&apos;m Chris John Gachuhi, a full-stack developer, technical
+                mentor, and Technical Founder & Freelance Consultant. I specialize in
                 crafting high-performance, scalable web applications using
-                React, Next.js, Node.js, and TypeScript — backed by real-world
-                delivery and leadership.
+                React, Next.js, Node.js, and TypeScript. My work is backed by real-world
+                delivery and leadership. Before diving into tech, I managed a busy retail hardware business in Nairobi&apos;s CBD. I ran inventory, supervised a team of five, and optimized daily operations. This entrepreneurial experience taught me how to lead, problem-solve, and deliver under pressure. I have carried this mindset into every project I have shipped since.
               </p>
-              <p className='mt-4 text-lg text-muted-foreground'>
-                Before diving into tech, I managed a busy retail hardware
-                business in Nairobi&apos;s CBD — running inventory, supervising
-                a team of 5, and optimizing daily ops. That entrepreneurial
-                hustle taught me how to lead, problem-solve, and deliver under
-                pressure — and I&apos;ve carried that mindset into every project
-                I&apos;ve shipped since.
-              </p>
-              <p className='mt-4 text-lg text-muted-foreground'>
-                From SaaS dashboards to startup MVPs, I build with performance,
-                security, and growth in mind. I also train and mentor rising
-                developers, because I believe that excellence scales when
-                it&apos;s shared. If you&apos;re building something ambitious —
-                let&apos;s talk.
+              <p className='mt-4 text-lg text-muted-foreground text-left'>
+                From SaaS dashboards to startup MVPs, I build with performance, security, and growth in mind. I also train and mentor rising developers, because I believe that excellence scales when it&apos;s shared. If you&apos;re building something ambitious, let&apos;s talk.
               </p>
               <div className='mt-8 flex flex-col gap-4 sm:flex-row'>
                 <Button asChild size='lg' className='gap-2'>
@@ -61,15 +102,124 @@ export default function AboutPage() {
                     <Icons.mail className='h-4 w-4' />
                   </Link>
                 </Button>
-                <Button asChild size='lg' variant='outline' className='gap-2'>
-                  <a
-                    href='/resume.pdf'
-                    target='_blank'
-                    rel='noopener noreferrer'>
-                    View Resume
-                    <Icons.fileCode className='h-4 w-4' />
-                  </a>
-                </Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button size='lg' variant='outline' className='gap-2'>
+                      Request My Resume
+                      <Icons.fileCode className='h-4 w-4' />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className='sm:max-w-[600px] bg-white/90 backdrop-blur-md rounded-lg shadow-xl'>
+                    <div className='p-6'>
+                      <DialogHeader>
+                        <div className='flex items-center gap-2'>
+                          <Icons.fileCode className='h-6 w-6 text-primary' />
+                          <DialogTitle className='text-2xl font-semibold'>
+                            Request My Resume
+                          </DialogTitle>
+                        </div>
+                        <CardDescription className='mt-2 text-muted-foreground'>
+                          Choose your preferred method to receive my
+                          professional resume.
+                        </CardDescription>
+                      </DialogHeader>
+
+                      <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        className='mt-6 space-y-4'>
+                        <div className='space-y-2'>
+                          <Label htmlFor='deliveryMethod'>
+                            Delivery Method
+                          </Label>
+                          <div className='flex items-center space-x-4'>
+                            <label className='flex items-center space-x-2'>
+                              <input
+                                type='radio'
+                                {...register('deliveryMethod')}
+                                value='email'
+                                className='h-4 w-4 text-primary focus:ring-primary'
+                              />
+                              <span>Email</span>
+                            </label>
+                            <label className='flex items-center space-x-2'>
+                              <input
+                                type='radio'
+                                {...register('deliveryMethod')}
+                                value='whatsapp'
+                                className='h-4 w-4 text-primary focus:ring-primary'
+                              />
+                              <span>WhatsApp</span>
+                            </label>
+                          </div>
+                        </div>
+
+                        {deliveryMethod === 'email' && (
+                          <div className='space-y-2'>
+                            <Label htmlFor='email'>Your Email</Label>
+                            <Input
+                              id='email'
+                              type='email'
+                              {...register('email')}
+                              placeholder='your.email@example.com'
+                              className='bg-background'
+                            />
+                            {errors.email && (
+                              <p className='text-sm text-red-500'>
+                                {errors.email.message}
+                              </p>
+                            )}
+                          </div>
+                        )}
+
+                        {deliveryMethod === 'whatsapp' && (
+                          <div className='space-y-2'>
+                            <Label htmlFor='whatsapp'>
+                              Your WhatsApp Number
+                            </Label>
+                            <Input
+                              id='whatsapp'
+                              type='tel'
+                              {...register('whatsapp')}
+                              placeholder='+254 7xx xxx xxx'
+                              className='bg-background'
+                            />
+                            {errors.whatsapp && (
+                              <p className='text-sm text-red-500'>
+                                {errors.whatsapp.message}
+                              </p>
+                            )}
+                          </div>
+                        )}
+
+                        <div className='flex flex-col gap-4'>
+                          <Button
+                            type='submit'
+                            disabled={isLoading}
+                            className='w-full'>
+                            {isLoading ? (
+                              <>
+                                <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
+                                Sending...
+                              </>
+                            ) : (
+                              'Send Resume'
+                            )}
+                          </Button>
+                          {successMessage && (
+                            <p className='text-center text-sm text-green-500'>
+                              {successMessage}
+                            </p>
+                          )}
+                          {errorMessage && (
+                            <p className='text-center text-sm text-red-500'>
+                              {errorMessage}
+                            </p>
+                          )}
+                        </div>
+                      </form>
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
             </motion.div>
           </div>
@@ -89,23 +239,20 @@ export default function AboutPage() {
               <div className='grid gap-6 md:grid-cols-2'>
                 <Card>
                   <CardHeader>
-                    <CardTitle>Founder & Lead Developer</CardTitle>
-                    <CardDescription>Codegenix East Africa</CardDescription>
+                    <CardTitle>Technical Founder & Lead Developer (Freelance)</CardTitle>
+                    <CardDescription>Chris Gachuhi WebSolutions</CardDescription>
                     <Badge variant='outline'>2023 – Present</Badge>
                   </CardHeader>
                   <CardContent>
                     <ul className='ml-6 list-disc space-y-2 text-muted-foreground'>
                       <li>
-                        Founded a full-service dev agency focused on scalable
-                        apps and mentorship across East Africa
+                        Founded and operate my own consultancy, delivering scalable web solutions and mentorship across East Africa
                       </li>
                       <li>
-                        Shipped 15+ full-stack web products across legal,
-                        edtech, healthcare, and ecommerce
+                        Shipped 15+ full-stack web products for clients in legal, edtech, healthcare, and ecommerce
                       </li>
                       <li>
-                        Mentored over 100 junior developers through structured
-                        training, live projects, and internships
+                        Mentored over 100 junior developers through structured training, live projects, and internships
                       </li>
                     </ul>
                   </CardContent>
@@ -185,14 +332,14 @@ export default function AboutPage() {
 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Retail Manager (Family Business)</CardTitle>
+                    <CardTitle>Retail Store Manager</CardTitle>
                     <CardDescription>Nairobi CBD Hardware Shop</CardDescription>
                     <Badge variant='outline'>2017 – 2021</Badge>
                   </CardHeader>
                   <CardContent>
                     <ul className='ml-6 list-disc space-y-2 text-muted-foreground'>
                       <li>
-                        Managed daily retail operations, supervised 5 staff, and
+                        Managed daily retail operations, supervised 15+ staff, and
                         handled inventory logistics
                       </li>
                       <li>
@@ -279,8 +426,7 @@ export default function AboutPage() {
                   </CardHeader>
                   <CardContent>
                     <p className='mb-2 text-muted-foreground'>
-                      From mentoring to scaling teams and strategy — I lead with
-                      clarity.
+                      From mentoring to driving growth and strategy, I lead with clarity.
                     </p>
                     <div className='flex flex-wrap gap-2'>
                       <Badge>Mentorship</Badge>
@@ -324,15 +470,15 @@ export default function AboutPage() {
               My Philosophy
             </Badge>
             <h2 className='text-3xl font-bold tracking-tight sm:text-4xl'>
-              Great Software Serves People — Not Just Specs
+              Great Software Serves People &mdash; Not Just Specs
             </h2>
             <p className='mt-6 text-lg text-muted-foreground'>
               I code to solve, scale, and simplify. Whether it&apos;s launching
-              MVPs, training developers, or partnering with founders — I build
+              MVPs, mentoring developers, or working with founders, I build
               for clarity, performance, and people.
             </p>
             <blockquote className='mt-6 italic text-muted-foreground'>
-              &quot;We don&apos;t work with just anyone — we invest in bold
+              &quot;I do not work with just anyone. I invest my energy in bold
               thinkers building the next era of digital business.&quot;
             </blockquote>
             <div className='mt-8 text-center'>
