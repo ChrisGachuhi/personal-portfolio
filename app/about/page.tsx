@@ -7,7 +7,13 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
@@ -26,7 +32,7 @@ import { Separator } from '@/components/ui/separator'
 const formSchema = z.object({
   email: z.string().email('Please enter a valid email address').optional(),
   whatsapp: z.string().min(10, 'Please enter a valid phone number').optional(),
-  deliveryMethod: z.enum(['email', 'whatsapp']).default('email'),
+  deliveryMethod: z.enum(['email', 'whatsapp']),
 })
 
 type FormData = z.infer<typeof formSchema>
@@ -37,11 +43,17 @@ export default function AboutPage() {
   const [successMessage, setSuccessMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
-  const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm<FormData>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+    setValue,
+  } = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      deliveryMethod: 'email'
-    }
+      deliveryMethod: 'email',
+    },
   })
 
   const deliveryMethod = watch('deliveryMethod')
@@ -55,11 +67,15 @@ export default function AboutPage() {
       // In a real implementation, this would call the API
       setTimeout(() => {
         setSuccessMessage(
-          `Resume has been sent to your ${data.deliveryMethod === 'email' ? 'email' : 'WhatsApp'}!`
+          `Resume has been sent to your ${
+            data.deliveryMethod === 'email' ? 'email' : 'WhatsApp'
+          }!`
         )
       }, 1000)
       setSuccessMessage(
-        `Resume has been sent to your ${data.deliveryMethod === 'email' ? 'email' : 'WhatsApp'}!`
+        `Resume has been sent to your ${
+          data.deliveryMethod === 'email' ? 'email' : 'WhatsApp'
+        }!`
       )
       setShowModal(false)
     } catch (error) {
@@ -87,13 +103,23 @@ export default function AboutPage() {
               </h1>
               <p className='mt-6 text-lg text-muted-foreground text-left'>
                 I&apos;m Chris John Gachuhi, a full-stack developer, technical
-                mentor, and Technical Founder & Freelance Consultant. I specialize in
-                crafting high-performance, scalable web applications using
-                React, Next.js, Node.js, and TypeScript. My work is backed by real-world
-                delivery and leadership. Before diving into tech, I managed a busy retail hardware business in Nairobi&apos;s CBD. I ran inventory, supervised a team of five, and optimized daily operations. This entrepreneurial experience taught me how to lead, problem-solve, and deliver under pressure. I have carried this mindset into every project I have shipped since.
+                mentor, and Technical Founder & Freelance Consultant. I
+                specialize in crafting high-performance, scalable web
+                applications using React, Next.js, Node.js, and TypeScript. My
+                work is backed by real-world delivery and leadership. Before
+                diving into tech, I managed a busy retail hardware business in
+                Nairobi&apos;s CBD. I ran inventory, supervised a team of five,
+                and optimized daily operations. This entrepreneurial experience
+                taught me how to lead, problem-solve, and deliver under
+                pressure. I have carried this mindset into every project I have
+                shipped since.
               </p>
               <p className='mt-4 text-lg text-muted-foreground text-left'>
-                From SaaS dashboards to startup MVPs, I build with performance, security, and growth in mind. I also train and mentor rising developers, because I believe that excellence scales when it&apos;s shared. If you&apos;re building something ambitious, let&apos;s talk.
+                From SaaS dashboards to startup MVPs, I build with performance,
+                security, and growth in mind. I also train and mentor rising
+                developers, because I believe that excellence scales when
+                it&apos;s shared. If you&apos;re building something ambitious,
+                let&apos;s talk.
               </p>
               <div className='mt-8 flex flex-col gap-4 sm:flex-row'>
                 <Button asChild size='lg' className='gap-2'>
@@ -239,20 +265,27 @@ export default function AboutPage() {
               <div className='grid gap-6 md:grid-cols-2'>
                 <Card>
                   <CardHeader>
-                    <CardTitle>Technical Founder & Lead Developer (Freelance)</CardTitle>
-                    <CardDescription>Chris Gachuhi WebSolutions</CardDescription>
+                    <CardTitle>
+                      Technical Founder & Lead Developer (Freelance)
+                    </CardTitle>
+                    <CardDescription>
+                      Chris Gachuhi WebSolutions
+                    </CardDescription>
                     <Badge variant='outline'>2023 – Present</Badge>
                   </CardHeader>
                   <CardContent>
                     <ul className='ml-6 list-disc space-y-2 text-muted-foreground'>
                       <li>
-                        Founded and operate my own consultancy, delivering scalable web solutions and mentorship across East Africa
+                        Founded and operate my own consultancy, delivering
+                        scalable web solutions and mentorship across East Africa
                       </li>
                       <li>
-                        Shipped 15+ full-stack web products for clients in legal, edtech, healthcare, and ecommerce
+                        Shipped 15+ full-stack web products for clients in
+                        legal, edtech, healthcare, and ecommerce
                       </li>
                       <li>
-                        Mentored over 100 junior developers through structured training, live projects, and internships
+                        Mentored over 100 junior developers through structured
+                        training, live projects, and internships
                       </li>
                     </ul>
                   </CardContent>
@@ -339,8 +372,8 @@ export default function AboutPage() {
                   <CardContent>
                     <ul className='ml-6 list-disc space-y-2 text-muted-foreground'>
                       <li>
-                        Managed daily retail operations, supervised 15+ staff, and
-                        handled inventory logistics
+                        Managed daily retail operations, supervised 15+ staff,
+                        and handled inventory logistics
                       </li>
                       <li>
                         Developed client relationships and sourced stock to
@@ -426,7 +459,8 @@ export default function AboutPage() {
                   </CardHeader>
                   <CardContent>
                     <p className='mb-2 text-muted-foreground'>
-                      From mentoring to driving growth and strategy, I lead with clarity.
+                      From mentoring to driving growth and strategy, I lead with
+                      clarity.
                     </p>
                     <div className='flex flex-wrap gap-2'>
                       <Badge>Mentorship</Badge>
@@ -474,8 +508,8 @@ export default function AboutPage() {
             </h2>
             <p className='mt-6 text-lg text-muted-foreground'>
               I code to solve, scale, and simplify. Whether it&apos;s launching
-              MVPs, mentoring developers, or working with founders, I build
-              for clarity, performance, and people.
+              MVPs, mentoring developers, or working with founders, I build for
+              clarity, performance, and people.
             </p>
             <blockquote className='mt-6 italic text-muted-foreground'>
               &quot;I do not work with just anyone. I invest my energy in bold
