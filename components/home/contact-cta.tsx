@@ -24,26 +24,39 @@ export function ContactCta() {
           <div className='relative z-10 flex flex-col items-center justify-between gap-8 text-center md:flex-row md:text-left'>
             <div className='max-w-xl'>
               <h2 className='text-2xl font-bold tracking-tight sm:text-3xl'>
-                Let&apos;s Build Something That Matters
+                Let&apos;s Work Together
               </h2>
               <p className='mt-4 text-muted-foreground'>
-                Whether you&apos;re a founder with a bold idea, a team that
-                needs engineering firepower, or a developer seeking mentorship —
-                I&apos;m here to help you move with clarity, confidence, and
-                code that scales.
+                I'm currently open to new opportunities in frontend engineering
+                and technical leadership roles. Whether you need help with
+                building high-performance web applications, optimizing existing
+                codebases, or leading a technical team — let's connect and
+                discuss how I can contribute to your success.
               </p>
             </div>
             <div className='flex flex-col gap-4 sm:flex-row'>
               <Button asChild size='lg' className='gap-2'>
-                <Link href='/contact'>
-                  Start a Conversation
+                <Link href='mailto:chrisgachuhi@gmail.com'>
+                  Email Me
                   <Icons.mail className='h-4 w-4' />
                 </Link>
               </Button>
               <Button asChild size='lg' variant='outline' className='gap-2'>
-                <Link href='/mentorship'>
-                  Explore Mentorship
-                  <Icons.education className='h-4 w-4' />
+                <Link
+                  href='https://www.linkedin.com/in/chris-john-gachuhi/'
+                  target='_blank'
+                  rel='noopener noreferrer'>
+                  LinkedIn
+                  <Icons.linkedin className='h-4 w-4' />
+                </Link>
+              </Button>
+              <Button asChild size='lg' variant='outline' className='gap-2'>
+                <Link
+                  href='https://github.com/ChrisGachuhi'
+                  target='_blank'
+                  rel='noopener noreferrer'>
+                  GitHub
+                  <Icons.gitHub className='h-4 w-4' />
                 </Link>
               </Button>
             </div>

@@ -94,15 +94,10 @@ export function Footer() {
         </div>
 
         <div className='mt-8 border-t pt-8'>
-          <div className='flex flex-col items-center justify-between gap-4 md:flex-row'>
-            <p className='text-center text-sm text-muted-foreground'>
-              &copy; {new Date().getFullYear()} Chris John Gachuhi. All rights
-              reserved.
-            </p>
-            <p className='text-center text-sm text-muted-foreground'>
-              I built this with Next.js, Tailwind CSS, shadcn/ui, and a serious attention to detail.
-            </p>
-          </div>
+          <p className='text-center text-sm text-muted-foreground'>
+            &copy; {new Date().getFullYear()} Chris John Gachuhi. All rights
+            reserved.
+          </p>
         </div>
       </div>
     </footer>

@@ -13,27 +13,27 @@ import { Icons } from '@/components/icons'
 const skills = [
   {
     icon: <Icons.terminal className='h-10 w-10 text-accent' />,
-    title: 'Frontend Engineering',
+    title: 'Frontend Development',
     description:
-      'Creating modern, accessible UIs with React, Next.js 15, Tailwind CSS, and TypeScript — optimized for performance and maintainability.',
+      'Expert in React, Next.js, TypeScript, and Tailwind CSS. I build high-performance, accessible, and SEO-friendly web applications with a focus on user experience and maintainability.',
   },
   {
     icon: <Icons.server className='h-10 w-10 text-accent' />,
-    title: 'API Architecture',
+    title: 'Performance & Architecture',
     description:
-      'Designing secure, scalable APIs using Node.js, Express, and PostgreSQL or MongoDB. I think in terms of systems, not endpoints.',
+      'Specializing in component-based architecture, SSR/SSG, Core Web Vitals optimization, and implementing performance budgets to ensure fast, responsive applications.',
   },
   {
     icon: <Icons.shield className='h-10 w-10 text-accent' />,
-    title: 'Security & Optimization',
+    title: 'Analytics & Integrations',
     description:
-      'Authentication, authorization, and performance tuning are not features — they’re foundations. I implement JWT, OAuth2, SSR, caching, and more.',
+      'Proficient in implementing and optimizing tracking (GA4, Meta Pixel, Microsoft Clarity) and integrating with various APIs including Klaviyo, Recharge, and custom solutions.',
   },
   {
     icon: <Icons.education className='h-10 w-10 text-accent' />,
-    title: 'Mentorship & Developer Growth',
+    title: 'Technical Leadership',
     description:
-      "I've trained over 100 developers through workshops, bootcamps, and 1:1 mentorship — equipping them to think, build, and ship with confidence.",
+      '8+ years of experience mentoring developers, establishing best practices, and leading technical initiatives to drive business growth and team success.',
   },
 ]
 

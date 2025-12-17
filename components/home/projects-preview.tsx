@@ -17,36 +17,24 @@ import { Icons } from '@/components/icons'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 
-// project data
-const projects = [
-  {
-    id: '1',
-    title: 'AI-Powered Product Discovery',
-    description:
-      'Built into FindYourDrip — a Nairobi-based fashion tech startup currently in closed beta — this AI engine recommends products via image similarity and user preferences.',
-    image: 'https://images.pexels.com/photos/7679736/pexels-photo-7679736.jpeg',
-    tags: ['Next.js', 'OpenAI', 'Tailwind CSS', 'Vercel AI SDK'],
-    url: 'https://findyourdrip.com',
-  },
-  {
-    id: '2',
-    title: 'Multivendor Marketplace System',
-    description:
-      'Role-based access control for admins and sellers powering the FindYourDrip seller dashboard — built for scale from day one.',
-    image: 'https://images.pexels.com/photos/18105/pexels-photo.jpg',
-    tags: ['RBAC', 'JWT', 'MongoDB', 'React'],
-    url: 'https://findyourdrip.com',
-  },
-  {
-    id: '3',
-    title: 'Inventory & Seller Control Panel',
-    description:
-      'Custom dashboard for sellers to upload products, toggle availability, and manage listings with mobile-first design at its core.',
-    image: 'https://images.pexels.com/photos/5863373/pexels-photo-5863373.jpeg',
-    tags: ['React', 'Zod', 'React Hook Form', 'Tailwind CSS'],
-    url: 'https://findyourdrip.com',
-  },
-]
+import { projects } from '@/data/projects'
+
+// Define the project type for TypeScript
+type Project = {
+  id: string
+  title: string
+  description: string
+  image: string
+  tags: string[]
+  category: string
+  client: string
+  year: string
+  url: string
+  liveUrl?: string
+}
+
+// Get the first 3 projects for the featured section
+const featuredProjects: Project[] = projects.slice(0, 3)
 
 export function ProjectsPreview() {
   return (
@@ -71,7 +59,7 @@ export function ProjectsPreview() {
         </div>
 
         <div className='mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
-          {projects.map((project, i) => (
+          {featuredProjects.map((project: Project, i: number) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
@@ -93,8 +81,8 @@ export function ProjectsPreview() {
                     {project.title}
                   </CardTitle>
                   <div className='flex flex-wrap gap-2'>
-                    {project.tags.map((tag) => (
-                      <Badge key={tag} variant='secondary'>
+                    {project.tags.slice(0, 4).map((tag: string) => (
+                      <Badge key={tag} variant='secondary' className='text-xs'>
                         {tag}
                       </Badge>
                     ))}
@@ -105,13 +93,24 @@ export function ProjectsPreview() {
                     {project.description}
                   </CardDescription>
                 </CardContent>
-                <CardFooter>
-                  <Button asChild variant='ghost' className='gap-2'>
-                    <Link href={project.url}>
+                <CardFooter className='flex flex-col gap-2'>
+                  <Button asChild variant='default' className='w-full'>
+                    <Link href={`/case-studies/${project.url}`}>
                       View Case Study
-                      <Icons.chevronRight className='h-4 w-4' />
+                      <Icons.arrowRight className='ml-2 h-4 w-4' />
                     </Link>
                   </Button>
+                  {project.liveUrl && (
+                    <Button asChild variant='outline' className='w-full'>
+                      <a
+                        href={project.liveUrl}
+                        target='_blank'
+                        rel='noopener noreferrer'>
+                        Visit Live Site
+                        <Icons.externalLink className='ml-2 h-4 w-4' />
+                      </a>
+                    </Button>
+                  )}
                 </CardFooter>
               </Card>
             </motion.div>

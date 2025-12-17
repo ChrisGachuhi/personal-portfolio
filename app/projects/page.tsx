@@ -22,87 +22,66 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 const projects = [
   {
     id: '1',
-    title: 'AI-Powered Product Discovery',
+    title: 'AltaWater E-commerce Platform',
     description:
-      'Built into FindYourDrip — a Nairobi-based fashion tech startup currently in closed beta — this AI engine recommends products via image similarity and user preferences.',
+      'Built and own the entire frontend foundation across AltaWater brands — from the e-commerce storefront to the internal ERP tools. Improved site performance to consistent 95+ Lighthouse scores through image optimization, page structure improvements, and code optimization. Implemented comprehensive tracking with GA4, Facebook Pixel, Microsoft Clarity, Klaviyo, and Recharge for detailed user behavior analysis.',
     image: 'https://images.pexels.com/photos/7679736/pexels-photo-7679736.jpeg',
-    tags: ['Next.js', 'OpenAI', 'Tailwind CSS', 'Vercel AI SDK'],
-    category: 'AI',
-    client: 'FindYourDrip.com',
-    year: '2025',
-    url: 'https://findyourdrip.com',
+    tags: [
+      'Next.js',
+      'TypeScript',
+      'Tailwind CSS',
+      'MongoDB',
+      'Node.js',
+      'GA4',
+      'Facebook Pixel',
+      'Microsoft Clarity',
+      'Klaviyo',
+      'Recharge',
+    ],
+    category: 'Full-Stack',
+    client: 'AltaWater',
+    year: '2025 - Present',
+    url: 'altawater',
+    liveUrl: 'https://altawater.com',
   },
   {
     id: '2',
-    title: 'Multivendor Marketplace System',
+    title: 'T&O Advocates Website',
     description:
-      'Role-based access control for admins and sellers powering the FindYourDrip seller dashboard — built for scale from day one.',
+      'Developed a modern, responsive website with a case management system and client portal. Implemented secure document handling and client communication features.',
     image: 'https://images.pexels.com/photos/18105/pexels-photo.jpg',
-    tags: ['RBAC', 'JWT', 'MongoDB', 'React'],
+    tags: ['React', 'Node.js', 'MongoDB', 'Express', 'JWT'],
     category: 'Full-Stack',
-    client: 'FindYourDrip.com',
-    year: '2025',
-    url: 'https://findyourdrip.com',
+    client: 'T&O Advocates LLP',
+    year: '2024 - 2025',
+    url: 'to-advocates',
+    liveUrl: 'https://toadvocates.com',
   },
   {
     id: '3',
-    title: 'Inventory & Seller Control Panel',
+    title: 'Drip E-commerce Platform',
     description:
-      'Custom dashboard for sellers to upload products, toggle availability, and manage listings with mobile-first design at its core.',
+      'Built a full-stack e-commerce solution with an admin dashboard, product management, and payment integration. Implemented responsive design and optimized performance.',
     image: 'https://images.pexels.com/photos/5863373/pexels-photo-5863373.jpeg',
-    tags: ['React', 'Zod', 'React Hook Form', 'Tailwind CSS'],
-    category: 'Frontend',
-    client: 'FindYourDrip.com',
-    year: '2025',
-    url: 'https://findyourdrip.com',
+    tags: ['Next.js', 'Stripe', 'MongoDB', 'Express', 'Node.js'],
+    category: 'Full-Stack',
+    client: 'Drip',
+    year: '2024',
+    url: 'drip',
+    liveUrl: 'https://drip.example.com',
   },
   {
     id: '4',
-    title: 'E-commerce Frontend & Checkout UX',
+    title: 'The Claims Center Kenya',
     description:
-      'Responsive storefront for FindYourDrip, built with a persistent cart, frictionless checkout flow, and clean product discovery experience.',
-    image: 'https://images.pexels.com/photos/5632391/pexels-photo-5632391.jpeg',
-    tags: ['Next.js', 'Stripe', 'Framer Motion', 'REST APIs'],
-    category: 'Frontend',
-    client: 'FindYourDrip.com',
-    year: '2025',
-    url: 'https://findyourdrip.com',
-  },
-  {
-    id: '5',
-    title: 'Eagles Attitude Mentorship Landing Page',
-    description:
-      'A conversion-focused, SEO-optimized site for a values-driven mentorship brand — clean, vibrant, and built to perform.',
-    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
-    tags: ['HTML', 'SEO', 'Accessibility', 'SCSS'],
-    category: 'Frontend',
-    client: 'EaglesAttitudeMentorship.co.ke',
-    year: '2024',
-    url: 'https://eaglesattitudementorship.co.ke',
-  },
-  {
-    id: '6',
-    title: 'The Claims Center: Website & Marketing Funnel',
-    description:
-      'Full-spectrum delivery — landing page, SEO, Google & Meta ads — to establish and grow a legal-tech business with zero prior digital presence.',
+      'Developed a professional website for legal services with lead generation capabilities. Implemented SEO best practices and integrated with various marketing tools.',
     image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg',
-    tags: ['Next.js', 'Google Ads', 'Meta Suite', 'SEO'],
-    category: 'Full-Stack',
-    client: 'TheClaimsCenterKenya.co.ke',
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'SEO', 'Google Analytics'],
+    category: 'Frontend',
+    client: 'The Claims Center Kenya LLC',
     year: '2024',
-    url: 'https://theclaimscenterkenya.co.ke',
-  },
-  {
-    id: '7',
-    title: 'Ubunifu College Portal + Website',
-    description:
-      'Delivered a complete school system including admin tools and a sleek public-facing website for one of Kenya’s leading AI bootcamps.',
-    image: 'https://images.pexels.com/photos/5212330/pexels-photo-5212330.jpeg',
-    tags: ['Node.js', 'Next.js', 'MongoDB', 'Tailwind'],
-    category: 'Full-Stack',
-    client: 'UbunifuCollege.com',
-    year: '2024',
-    url: 'https://ubunifucollege.com',
+    url: 'claims-center-kenya',
+    liveUrl: 'https://theclaimscenterkenya.co.ke',
   },
 ]
 
@@ -200,19 +179,24 @@ export default function ProjectsPage() {
                         Client: {project.client}
                       </p>
                     </CardContent>
-                    <CardFooter>
-                      <Button
-                        asChild
-                        variant='default'
-                        className='w-full gap-2'>
-                        <a
-                          href={project.url}
-                          target='_blank'
-                          rel='noopener noreferrer'>
-                          Visit Live Site
-                          {/* <Icons className='h-4 w-4' /> */}
-                        </a>
+                    <CardFooter className='flex flex-col gap-2'>
+                      <Button asChild variant='default' className='w-full'>
+                        <Link href={`/case-studies/${project.url}`}>
+                          View Case Study
+                          <Icons.arrowRight className='ml-2 h-4 w-4' />
+                        </Link>
                       </Button>
+                      {project.liveUrl && (
+                        <Button asChild variant='outline' className='w-full'>
+                          <a
+                            href={project.liveUrl}
+                            target='_blank'
+                            rel='noopener noreferrer'>
+                            Visit Live Site
+                            <Icons.externalLink className='ml-2 h-4 w-4' />
+                          </a>
+                        </Button>
+                      )}
                     </CardFooter>
                   </Card>
                 </motion.div>
@@ -238,8 +222,8 @@ export default function ProjectsPage() {
               How I Work
             </h2>
             <p className='mt-6 text-lg text-muted-foreground'>
-              I don&apos;t just code. I architect systems that drive revenue, scale
-              with your ambition, and leave competitors wondering how you
+              I don&apos;t just code. I architect systems that drive revenue,
+              scale with your ambition, and leave competitors wondering how you
               shipped so fast.
             </p>
           </div>

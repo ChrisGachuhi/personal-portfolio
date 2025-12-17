@@ -18,6 +18,7 @@ import {
   Laptop,
   Flame,
   ArrowRight,
+  ArrowLeft,
   RefreshCw,
   Clock,
   Shield,
@@ -27,8 +28,8 @@ import {
   Database,
   Lock,
   Search,
-  type LucideProps
-} from "lucide-react"
+  type LucideProps,
+} from 'lucide-react'
 
 export const Icons = {
   logo: CodeIcon,
@@ -60,4 +61,6 @@ export const Icons = {
   database: Database,
   lock: Lock,
   search: Search,
+  arrowLeft: ArrowLeft,
+  externalLink: ExternalLink,
 }

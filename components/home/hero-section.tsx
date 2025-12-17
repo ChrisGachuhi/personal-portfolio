@@ -21,7 +21,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}>
             <h1 className='gradient-text text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl'>
-              Full-Stack Engineer, Technical Founder & Team Catalyst
+              Senior Frontend Engineer & Technical Leader
             </h1>
           </motion.div>
 
@@ -30,7 +30,8 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className='mt-6 text-lg text-muted-foreground md:text-xl'>
-            Building revolutionary products, fast MVPs for startups, robust solutions for established teams.
+            Crafting high-performing, accessible, and SEO-friendly web
+            applications with React/Next.js
           </motion.p>
 
           <motion.p
@@ -38,7 +39,14 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className='mt-4 text-base text-muted-foreground md:text-lg'>
-            With a proven track record as a technical founder across multiple startups, I specialize in architecting and shipping high-impact MVPs at speed. My experience spans launching new products from scratch, scaling systems, and collaborating with established teams to enhance existing codebases. Whether leading innovation or integrating seamlessly into ongoing projects, I bring a blend of technical excellence, entrepreneurial drive, and a passion for delivering business value.
+            Senior Frontend Engineer with 4+ years of hands-on web development
+            and 8+ years in technical leadership. I architect and deliver
+            high-performing, accessible, and SEO-friendly web applications,
+            translating complex UI/UX designs into resilient React/Next.js
+            interfaces. Comfortable owning the full client-side stack: component
+            architecture, performance optimization, API integration, analytics,
+            and experimentation — always aligned with product, marketing, and
+            business goals.
           </motion.p>
 
           <motion.div
